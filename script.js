@@ -12,10 +12,10 @@
 /* ********************************************* */
 /* globale variabelen die je gebruikt in je game */
 /* ********************************************* */
-var x;
-var y;
-var speedX;
-var speedY;
+var xPosities;
+var yPosities;
+var speedsX;
+var speedsY;
 const BREEDTE = 20;
 
 
@@ -34,10 +34,10 @@ function setup() {
   createCanvas(1280, 720);
 
   // initialiseer waarden
-  x = width / 2;               // midden van de breedte van het canvas
-  y = height / 2;              // midden van de hoogte van het canvas
-  speedX = random(-5, 5);      // random waarde tussen -5 en 5
-  speedY = random(-5, 5);      // 👆
+  xPosities = [130, 60, 470, 560, 23];
+  yPosities = [700, 1010, 40, 80, 900];
+  speedsX = [random(4,3), random(-5, 5), random(3,4), random(2,2), random(1,1)];      // random waarde tussen -5 en 5
+  speedsY = [random(4,3), random(-5, 5), random(3,4), random(2,2), random(1,1)];      // 👆
 }
 
 /**
@@ -55,16 +55,18 @@ function draw() {
   rect(x, y, BREEDTE, BREEDTE);
 
   // update positie
-  x = x + speedX;
-  y = y + speedY;
+  for (var i = 0; i < xPosities.length; i++) {
+  xPosities[i] = xPosities[i] + speedsX[i];
+  yPosities[i] = yPosities[i] + speedsY[i];
 
   // stuiter evt. tegen de kanten
   if (x <= 0 || x + BREEDTE >= width) {
-    speedX = speedX * -1;
+    speedsX[1] = speedsX[i] * -1;
   }
 
   if (y <= 0 || y + BREEDTE >= height) {
-    speedY = speedY * -1;
+    speedsY[i] = speedsY[i] * -1;
   }
 
+}
 }
