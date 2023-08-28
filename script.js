@@ -34,8 +34,8 @@ function setup() {
   createCanvas(1280, 720);
 
   // initialiseer waarden
-  xPosities = [130, 60, 470, 560, 23];
-  yPosities = [700, 1010, 40, 80, 900];
+  xPosities = [130, 100, 170, 60, 83];
+  yPosities = [400, 300, 200, 100, 500];
   speedsX = [random(4,3), random(-5, 5), random(3,4), random(2,2), random(1,1)];      // random waarde tussen -5 en 5
   speedsY = [random(4,3), random(-5, 5), random(3,4), random(2,2), random(1,1)];      // 👆
 }
