@@ -49,22 +49,25 @@ function draw() {
   // zwarte achtergrond
   background(0, 0, 0);
 
-  // teken
-  noStroke;
-  fill(255, 255, 255);
-  rect(x, y, BREEDTE, BREEDTE);
+
 
   // update positie
   for (var i = 0; i < xPosities.length; i++) {
+
+  // teken
+  noStroke;
+  fill(255, 255, 255);
+  rect(xPosities[i], yPosities[i], BREEDTE, BREEDTE);
+
   xPosities[i] = xPosities[i] + speedsX[i];
   yPosities[i] = yPosities[i] + speedsY[i];
 
   // stuiter evt. tegen de kanten
-  if (x <= 0 || x + BREEDTE >= width) {
-    speedsX[1] = speedsX[i] * -1;
+  if (xPosities <= 0 || xPosities + BREEDTE >= width) {
+    speedsX[i] = speedsX[i] * -1;
   }
 
-  if (y <= 0 || y + BREEDTE >= height) {
+  if (yPosities <= 0 || yPosities + BREEDTE >= height) {
     speedsY[i] = speedsY[i] * -1;
   }
 
