@@ -1,6 +1,6 @@
- /* Opdracht Objectgeorienteerd programmeren
-    Informatica - Emmauscollege Rotterdam
- */
+/* Opdracht Objectgeorienteerd programmeren
+   Informatica - Emmauscollege Rotterdam
+*/
 
 /* ******************************************************* */
 /* instellingen om foutcontrole van je code beter te maken */
@@ -12,10 +12,7 @@
 /* ********************************************* */
 /* globale variabelen die je gebruikt in je game */
 /* ********************************************* */
-var xPosities;
-var yPosities;
-var speedsX;
-var speedsY;
+var mensen;
 const BREEDTE = 20;
 
 
@@ -34,10 +31,37 @@ function setup() {
   createCanvas(1280, 720);
 
   // initialiseer waarden
-  xPosities = [130, 100, 170, 60, 83];
-  yPosities = [400, 300, 200, 100, 500];
-  speedsX = [random(4,3), random(-5, 5), random(3,4), random(2,2), random(1,1)];      // random waarde tussen -5 en 5
-  speedsY = [random(4,3), random(-5, 5), random(3,4), random(2,2), random(1,1)];      // 👆
+  mensen = [{
+    xPosities: 320,
+    yPosities: 100,
+    speedsX: random(-5, 5),
+    speedsY: random(-5, 5)
+  },
+  {
+    xPosities: 500,
+    yPosities: 490,
+    speedsX: random(-5, 5),
+    speedsY: random(-5, 5)
+  },
+  {
+    xPosities: 450,
+    yPosities: 200,
+    speedsX: random(-5, 5),
+      speedsY: random(-5, 5)
+  },
+  {
+    xPosities: 400,
+    yPosities: 300,
+    speedsX: random(-5, 5),
+      speedsY: random(-5, 5)
+  },
+  {
+    xPosities: 520,
+    yPosities: 230,
+    speedsX: random(-5, 5),
+        speedsY: random(-5, 5)
+  }
+  ];
 }
 
 /**
@@ -51,25 +75,29 @@ function draw() {
 
 
 
+
+
+  
+
   // update positie
-  for (var i = 0; i < xPosities.length; i++) {
+  for (var i = 0; i < mensen.length; i++) {
 
-  // teken
-  noStroke;
-  fill(255, 255, 255);
-  rect(xPosities[i], yPosities[i], BREEDTE, BREEDTE);
+    // teken
+    noStroke;
+    fill(255, 255, 255);
+    rect(mensen[i].xPosities, mensen[i].yPosities, BREEDTE, BREEDTE);
 
-  xPosities[i] = xPosities[i] + speedsX[i];
-  yPosities[i] = yPosities[i] + speedsY[i];
+    mensen[i].xPosities = mensen[i].xPosities + mensen[i].speedsX[i];
+    mensen[i].yPosities = mensen[i].yPosities + mensen[i].speedsY[i];
 
-  // stuiter evt. tegen de kanten
-  if (xPosities <= 0 || xPosities + BREEDTE >= width) {
-    speedsX[i] = speedsX[i] * -1;
+    // stuiter evt. tegen de kanten
+    if (mensen[i].xPosities <= 0 || mensen[i].xPosities + BREEDTE >= width) {
+      mensen[i].speedsX[i] = mensen[i].speedsX[i] * -1;
+    }
+
+    if (mensen[i].yPosities <= 0 || mensen[i].yPosities + BREEDTE >= height) {
+      mensen[i].speedsY[i] = mensen[i].speedsY[i] * -1;
+    }
+
   }
-
-  if (yPosities <= 0 || yPosities + BREEDTE >= height) {
-    speedsY[i] = speedsY[i] * -1;
-  }
-
-}
 }
